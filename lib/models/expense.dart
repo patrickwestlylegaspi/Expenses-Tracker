@@ -19,7 +19,6 @@ const categoryIcons = {
   Category.work: Icons.work_rounded,
 };
 
-
 class Expense {
   Expense({
     required this.title,
@@ -27,7 +26,6 @@ class Expense {
     required this.date,
     required this.category,
   });
-
 
   final String title;
   final double amount;
@@ -39,5 +37,23 @@ class Expense {
   }
 }
 
+class ExpenseBucket {
+  ExpenseBucket({
+    required this.category,
+    required this.expenses,
+  });
+
+  final Category category;
+  final List<Expense> expenses;
+
+  double get totalExpenses {
+    double sum = 0;
+
+    for (final expense in expenses) {
+      sum += expense.amount;
+    }
+    return sum;
+  }
+}
 //final String id;
 //: id = uuid.v4();
